@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Reels Lead Finder",
+  "version": "0.1.0",
+  "description": "Collects small-business leads from a remote Android Instagram session via a bridge server. Saves deduplicated CSV.",
+  "permissions": ["storage", "unlimitedStorage", "alarms"],
+  "host_permissions": ["http://127.0.0.1/*", "http://localhost/*", "https://generativelanguage.googleapis.com/*"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Reels Lead Finder" },
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self'" }
+}

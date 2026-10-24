@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Reels Lead Finder</title>
+<link rel="stylesheet" href="dashboard.css"></head><body>
+<header><h1>Reels Lead Finder</h1><span id="conn" class="pill">offline</span><span id="run" class="pill">stopped</span></header>
+<section class="bar">
+  <button id="start" class="go">Start</button><button id="pause">Pause</button><button id="resume">Resume</button><button id="stop" class="stop">Stop</button>
+  <span class="sp"></span>
+  <button id="csv">Export CSV</button><button id="xls">Export Excel (red = uncertain)</button><button id="clear" class="stop">Clear leads</button>
+</section>
+<section id="reason" class="warn" hidden></section>
+<section class="counters">
+  <div><b id="c-scanned">0</b><span>Reels scanned</span></div>
+  <div><b id="c-visited">0</b><span>Profiles visited</span></div>
+  <div><b id="c-saved">0</b><span>Saved</span></div>
+  <div><b id="c-match">0</b><span>Match</span></div>
+  <div><b id="c-unc">0</b><span>Uncertain</span></div>
+  <div><b id="c-rej">0</b><span>Rejected</span></div>
+  <div><b id="c-dup">0</b><span>Duplicates</span></div>
+  <div><b id="c-hour">0</b><span>Visits / hour</span></div>
+</section>
+<details open><summary>Settings</summary>
+<form id="f">
+  <label>Bridge URL<input name="bridgeUrl"></label>
+  <label>Bridge token<input name="token" type="password" autocomplete="off"></label>
+  <label>Niche (for AI check)<input name="niche" placeholder="printing machine exporters"></label>
+  <label>Keywords (comma separated; empty = niche)<input name="keywords" placeholder="printing machine, offset, flexo"></label>
+  <label>Max followers<input name="maxFollowers" type="number" min="0"></label>
+  <label>Min followers<input name="minFollowers" type="number" min="0"></label>
+  <label>Max posts<input name="maxPosts" type="number" min="0"></label>
+  <label class="chk"><input name="requireContact" type="checkbox"> Only save accounts with public WhatsApp/phone</label>
+  <label>Gemini API key (free tier, optional)<input name="geminiKey" type="password" autocomplete="off"></label>
+  <label>Gemini model<input name="geminiModel"></label>
+  <label>Max profile visits / hour<input name="profilesPerHour" type="number" min="1" max="120"></label>
+  <label>Max profile visits / day<input name="dailyCap" type="number" min="1" max="1000"></label>
+  <label>Seconds per Reel (min)<input name="dwellMin" type="number" min="2"></label>
+  <label>Seconds per Reel (max)<input name="dwellMax" type="number" min="3"></label>
+  <button type="submit">Save settings</button> <span id="saved"></span>
+</form></details>
+<h2>Leads <small id="count"></small></h2>
+<div class="wrap"><table id="t"><thead><tr><th>Status</th><th>Username</th><th>Followers</th><th>Posts</th><th>Likes</th><th>WhatsApp</th><th>Phone</th><th>Reason</th><th>Bio</th></tr></thead><tbody></tbody></table></div>
+<h2>Log</h2><pre id="log"></pre>
+<script src="dashboard.js"></script></body></html>
